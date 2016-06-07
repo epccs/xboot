@@ -39,7 +39,18 @@
 #include <avr/interrupt.h>
 #include <util/crc16.h>
 
-// token pasting
+// https://gcc.gnu.org/onlinedocs/cpp/Stringification.html
+// used for debuging preprocessor
+#define XSTR(x) STR(x)
+#define STR(x) #x
+/* used to see what the preprocesor is doing
+#ifdef USE_LED
+#pragma message "The value of USE_LED: " XSTR(USE_LED)
+#error stop everything while I figure it out
+#endif
+*/
+
+// token pasting, ## is the preprocessor operator for concatenation
 #define token_paste2_int(x, y) x ## y
 #define token_paste2(x, y) token_paste2_int(x, y)
 #define token_paste3_int(x, y, z) x ## y ## z
@@ -219,12 +230,12 @@
 #define ENTER_PORT_PIN          token_paste2(PIN, ENTER_PORT_NAME)
 #endif // __AVR_XMEGA__
 
-// LED
+// LED e.g. for mega1284 "PORT" ## 'B' => PORTB => _SFR_IO8(0x05) => (*(volatile uint8_t *)((0x05) + 0x20))
 #define LED_PORT                token_paste2(PORT, LED_PORT_NAME)
 
 #ifndef __AVR_XMEGA__
 #define LED_PORT_DDR            token_paste2(DDR, LED_PORT_NAME)
-#define LED_PORT_PIN            token_paste2(PIN, LED_PORT_NAME)
+//# not using this #define LED_PORT_PIN            token_paste3(PIN, LED_PORT_NAME, LED_PIN)
 #endif // __AVR_XMEGA__
 
 // UART RS485 Enable Output
