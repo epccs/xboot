@@ -63,7 +63,7 @@ USE_ENTER_EEPROM = no
 LOCK_SPM_ON_EXIT = no
 
 # Communication
-USE_LED = no
+USE_LED = yes
 USE_UART = yes
 USE_UART_EN_PIN = no
 USE_I2C = no
