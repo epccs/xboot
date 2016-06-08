@@ -40,14 +40,14 @@ AVRDUDE_FUSES =
 # determined in main Makefile, change them here
 # and then uncomment OVERRIDE_AVRDUDE_FUSES
 
-#AVRDUDE_FUSES += -U lfuse:w:0xFF:m
-#AVRDUDE_FUSES += -U hfuse:w:0xFF:m
-#AVRDUDE_FUSES += -U efuse:w:0xFF:m
-#AVRDUDE_FUSES += -U lock:w:0xFF:m
+AVRDUDE_FUSES += -U lfuse:w:0xF7:m
+AVRDUDE_FUSES += -U hfuse:w:0xD0:m
+AVRDUDE_FUSES += -U efuse:w:0xFD:m
+AVRDUDE_FUSES += -U lock:w:0x2F:m
 
 # Uncomment to override default fuse configurations
 # from main Makefile
-#OVERRIDE_AVRDUDE_FUSES = yes
+OVERRIDE_AVRDUDE_FUSES = yes
 
 # XBoot settings
 
