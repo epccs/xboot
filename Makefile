@@ -159,11 +159,16 @@ FORMAT = ihex
 #FORMAT = srec
 
 # Target file name (without extension).
-TARGET = xboot
+ifdef UART_BAUD_RATE
+	TARGET = xboot_$(MCU)_-b$(UART_BAUD_RATE)_F_CPU$(F_CPU)
+else
+	TARGET = xboot_$(MCU)_F_CPU$(F_CPU)
+endif
+
 
 
 # List C source files here. (C dependencies are automatically generated.)
-SRC = $(TARGET).c
+SRC = main.c
 SRC += flash.c
 SRC += eeprom_driver.c
 SRC += uart.c
