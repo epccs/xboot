@@ -877,13 +877,14 @@ extcoff: $(TARGET).elf
 
 
 
-# Link: create ELF output file from object files.
+# Link: create ELF output file from object files and then remove list and object files.
 .SECONDARY : $(TARGET).elf
 .PRECIOUS : $(OBJ)
 %.elf: $(CONFIG_H) $(OBJ)
 	@echo
 	@echo $(MSG_LINKING) $@
 	$(CC) $(ALL_CFLAGS) $(OBJ) --output $@ $(LDFLAGS)
+	rm -f $(TARGET).o $(OBJ) $(LST)
 
 
 # Compile: create object files from C source files.
