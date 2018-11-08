@@ -160,9 +160,9 @@ FORMAT = ihex
 
 # Target file name (without extension).
 ifdef UART_BAUD_RATE
-	TARGET = xboot_$(MCU)_-b$(UART_BAUD_RATE)_F_CPU$(F_CPU)
+	TARGET = xboot_avr109_$(MCU)_-b$(UART_BAUD_RATE)_F_CPU$(F_CPU)
 else
-	TARGET = xboot_$(MCU)_F_CPU$(F_CPU)
+	TARGET = xboot_avr109_$(MCU)_F_CPU$(F_CPU)
 endif
 
 
